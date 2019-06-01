@@ -54,8 +54,21 @@
 
                 if (!!this.email && this.email.length > 0) {
 
+                    const body = JSON.stringify({
+                        email: this.email
+                    });
+
                     fetch(
-                        'url' //TODO
+                        'http://192.168.64.2/api/subscribe.php',
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            mode: 'cors',
+                            body
+                        }
                     ).then(res => res.json()).then(res => {
 
                         if (res) {
